@@ -11,7 +11,7 @@ now_time = datetime.date.today()
 LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 USER_ID = os.getenv("USER_ID")
 
-line_bot_api = MessagingApi(LINE_CHANNEL_ACCESS_TOKEN)
+line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 
 # 気象庁から天気情報を取得
 url = "https://www.jma.go.jp/bosai/forecast/data/forecast/110000.json" # 熊谷地方気象台
