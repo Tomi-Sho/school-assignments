@@ -8,8 +8,8 @@ from linebot.models import TextSendMessage
 now_time = datetime.date.today()
 
 # LINEのChannelAccessTokenとUSER IDを取得する
-LINE_CHANNEL_ACCESS_TOKEN = os.getenv(LINE_CHANNEL_ACCESS_TOKEN)
-USER_ID = os.getenv(USER_ID)
+LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+USER_ID = os.getenv("USER_ID")
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 
