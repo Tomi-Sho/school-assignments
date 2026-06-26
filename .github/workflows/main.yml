@@ -26,6 +26,6 @@ jobs:
       - name: Pythonプログラムを実行
         # GitHubのSecretsからLINEの鍵を安全に読み込む
         env:
-          LINE_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
-          LINE_USER: ${{ secrets.USER_ID }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          USER_ID: ${{ secrets.USER_ID }}
         run: python weather_line_bot/weather_line.py
