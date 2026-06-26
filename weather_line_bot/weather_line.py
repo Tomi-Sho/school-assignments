@@ -38,12 +38,12 @@ try:
         today_weather += "☁"
     elif "晴れ" in today_weather:
         today_weather += "☀"
+        today_weather = "".join(today_weather.split())
 
     # LINEに送信するメッセージの作成
     message_text = f"【今日の天気】\n{now_time.month}月{now_time.day}日の埼玉県 {area_name}の天気は「{today_weather}"
     if "所により" in message_text:
         message_text = message_text.replace("所により", "（所により") + "）」です！"
-    message_text = "".join(message_text.split())
     # LINEにメッセージを送信
     line_bot_api.push_message(USER_ID, TextSendMessage(text=message_text))
     print("LINEへの天気通知が成功しました")
