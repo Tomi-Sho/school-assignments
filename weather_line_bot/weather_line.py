@@ -40,10 +40,15 @@ try:
         today_weather += "☀"
 
     # LINEに送信するメッセージの作成
-    line_message = f"【今日の天気】\n{now_time.month}月{now_time.day}日の埼玉県 {area_name}の天気は「{today_weather}です！」" 
+    message_text = f"【今日の天気】\n{now_time.month}月{now_time.day}日の埼玉県 {area_name}の天気は「{today_weather}」です！"
+    message_text = message_text.replace(" まで ", "まで")
+    message_text = message_text.replace(" から ", "から")
+    if "所により" in message_text:
+        message_text = message_text.replace(" 所により", "（所により") + "）"
+    message_text = message_text.replace(" ", " ")
     
     # LINEにメッセージを送信
-    line_bot_api.push_message(USER_ID, TextSendMessage(text=line_message))
+    line_bot_api.push_message(USER_ID, TextSendMessage(text=message_text))
     print("LINEへの天気通知が成功しました")
 
 # エラー処理
