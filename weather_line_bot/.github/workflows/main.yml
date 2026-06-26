@@ -2,9 +2,9 @@ name: 毎日天気を通知する
 
 on:
   schedule:
-    # 毎日日本時間の朝6時（世界標準時の前日22時）に自動実行する設定
+    # 毎日日本時間の朝6時（世界標準時の前日21時）に自動実行する設定
     - cron: '0 21 * * *'
-  # （手動テスト用）
+  # GitHubの画面から手動で「今すぐ動かす」ボタンを押せるようにする設定（テスト用）
   workflow_dispatch:
 
 jobs:
@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: コードをチェックアウト（取得）
-        uses: actions/checkout@v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
 
       - name: Pythonのセットアップ
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@f677139bbe7f9c59b41e40162b753c062f5d49a3
         with:
           python-version: '3.11'
 
@@ -24,8 +24,7 @@ jobs:
           pip install line-bot-sdk requests
 
       - name: Pythonプログラムを実行
-        # GitHubのSecretsからLINEの鍵を安全に読み込む
         env:
           LINE_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER: ${{ secrets.USER_ID }}
-        run: python weather_line.py
+        run: python weather_line_bot/weather_line.py
