@@ -27,4 +27,4 @@ jobs:
         env:
           LINE_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER: ${{ secrets.USER_ID }}
-        run: python weather_line.py
+        run: python weather_line_bot/weather_line.py
