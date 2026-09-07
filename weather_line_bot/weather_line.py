@@ -7,7 +7,7 @@ from datetime import datetime, timezone, timedelta
 
 # 今日の月と日を取得
 JST = timezone(timedelta(hours=9))
-now_time = datetime.date.today(JST)
+now_time = datetime.now(JST)
 
 # LINEのChannelAccessTokenとUSER IDを取得する
 LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
